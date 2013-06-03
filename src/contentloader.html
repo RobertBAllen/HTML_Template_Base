@@ -1,0 +1,300 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>ContentLoaderPage</title>
+        <link rel="stylesheet" type="text/css" href="emx_nav_left.css" />
+        <link rel="stylesheet" type="text/css" href="visibility.css" />
+        <script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript" src="dynamiccontent.js"></script>
+        <script type="text/javascript" src="dynamicmenu.js"></script>
+        <script type="text/javascript" src="contentloader.js"></script>
+        <script type="text/javascript">
+        var fixers = ["#pageNav"];
+        $(document).ready(function() {
+            params = getUrlVars();
+            tryParams();
+            var msie6 = $.browser == 'msie' && $.browser.version < 7;
+            if (!msie6) {
+                for (var i = 0; i < fixers.length; i++) {
+                    var id = fixers[i];
+                    var top = $(id).offset().top - parseFloat($(id).css('margin-top').replace(/auto/,0));
+                    $(window).scroll(function(e) {
+                        var y = $(window).scrollTop();
+                        if (y >= top) {
+                            $(id).removeClass('normal');
+                            $(id).addClass('fixed');
+                        } else {
+                            $(id).removeClass('fixed');
+                            $(id).addClass('normal');
+                        }
+                    });
+                }
+            }
+            scrollToId(window.location.hash);
+        });
+        </script>
+    </head>
+<body onmousemove="closesubnav(event);">
+    <div id="masthead"> 
+      <h1 id="siteName">Site Name</h1> 
+      <div id="utility"> 
+        <a href="javascript:gotopage('trimet/page.html');" id="util1">Trimet Advanced Trip System</a> | <a href="#" id="util3">Utility Link</a> | <a href="#" id="util3">Utility Link</a> 
+      </div> 
+      <div id="globalNav"> 
+        <img alt="" src="gblnav_left.gif" height="32" width="4" id="gnl"> <img alt="" src="glbnav_right.gif" height="32" width="4" id="gnr"> 
+        <div id="globalLink"> 
+          <a href="#" id="gl1" class="glink" onmouseover="ehandler(event,menuitem1);">Home</a>
+          <a href="#" id="gl2" class="glink" onmouseover="ehandler(event,menuitem2);">global2 link</a>
+          <a href="#" id="gl3" class="glink" onmouseover="ehandler(event,menuitem3);">global3 link</a>
+          <a href="#" id="gl4" class="glink" onmouseover="ehandler(event,menuitem4);">global4 link</a>
+          <a href="#" id="gl5" class="glink" onmouseover="ehandler(event,menuitem5);">global5 link</a>
+          <a href="#" id="gl6" class="glink" onmouseover="ehandler(event,menuitem6);">global6 link</a>
+          <a href="#" id="gl7" class="glink" onmouseover="ehandler(event,menuitem7);">global7 link</a> 
+        </div> 
+        <!--end globalLinks--> 
+        <form id="search" action=""> <!-- visibility.css disables this, will re-enable when implemented --> 
+          <input name="searchFor" type="text" size="10"> 
+          <a href="">search</a> 
+        </form> 
+      </div> 
+      <!-- end globalNav --> 
+      <div id="subglobals">
+          <div id="subglobal1" class="subglobalNav"> 
+            <a href="#" id="sg1a">subglobal1 link</a> |
+            <a href="#" id="sg1b">subglobal1 link</a> |
+            <a href="#" id="sg1c">subglobal1 link</a> |
+            <a href="#" id="sg1d">subglobal1 link</a> |
+            <a href="#" id="sg1e">subglobal1 link</a> |
+            <a href="#" id="sg1f">subglobal1 link</a> |
+            <a href="#" id="sg1g">subglobal1 link</a> 
+          </div> 
+          <div id="subglobal2" class="subglobalNav"> 
+            <a href="#" id="sg2a">subglobal2 link</a> |
+            <a href="#" id="sg2b">subglobal2 link</a> |
+            <a href="#" id="sg2c">subglobal2 link</a> |
+            <a href="#" id="sg2d">subglobal2 link</a> |
+            <a href="#" id="sg2e">subglobal2 link</a> |
+            <a href="#" id="sg2f">subglobal2 link</a> |
+            <a href="#" id="sg2g">subglobal2 link</a> 
+          </div> 
+          <div id="subglobal3" class="subglobalNav"> 
+            <a href="#" id="sg3a">subglobal3 link</a> |
+            <a href="#" id="sg3b">subglobal3 link</a> |
+            <a href="#" id="sg3c">subglobal3 link</a> |
+            <a href="#" id="sg3d">subglobal3 link</a> |
+            <a href="#" id="sg3e">subglobal3 link</a> |
+            <a href="#" id="sg3f">subglobal3 link</a> |
+            <a href="#" id="sg3g">subglobal3 link</a> 
+          </div> 
+          <div id="subglobal4" class="subglobalNav"> 
+            <a href="#" id="sg4a">subglobal4 link</a> |
+            <a href="#" id="sg4b">subglobal4 link</a> |
+            <a href="#" id="sg4c">subglobal4 link</a> |
+            <a href="#" id="sg4d">subglobal4 link</a> |
+            <a href="#" id="sg4e">subglobal4 link</a> |
+            <a href="#" id="sg4f">subglobal4 link</a> |
+            <a href="#" id="sg4g">subglobal4 link</a> 
+          </div> 
+          <div id="subglobal5" class="subglobalNav"> 
+            <a href="#" id="sg5a">subglobal5 link</a> |
+            <a href="#" id="sg5b">subglobal5 link</a> |
+            <a href="#" id="sg5c">subglobal5 link</a> |
+            <a href="#" id="sg5d">subglobal5 link</a> |
+            <a href="#" id="sg5e">subglobal5 link</a> |
+            <a href="#" id="sg5f">subglobal5 link</a> |
+            <a href="#" id="sg5g">subglobal5 link</a> 
+          </div> 
+          <div id="subglobal6" class="subglobalNav"> 
+            <a href="#" id="sg6a">subglobal6 link</a> |
+            <a href="#" id="sg6b">subglobal6 link</a> |
+            <a href="#" id="sg6c">subglobal6 link</a> |
+            <a href="#" id="sg6d">subglobal6 link</a> |
+            <a href="#" id="sg6e">subglobal6 link</a> |
+            <a href="#" id="sg6f">subglobal6 link</a> |
+            <a href="#" id="sg6g">subglobal6 link</a> 
+        </div> 
+        <div id="subglobal7" class="subglobalNav"> 
+            <a href="#" id="sg7a">subglobal7 link</a> |
+            <a href="#" id="sg7b">subglobal7 link</a> |
+            <a href="#" id="sg7c">subglobal7 link</a> |
+            <a href="#" id="sg7d">subglobal7 link</a> |
+            <a href="#" id="sg7e">subglobal7 link</a> |
+            <a href="#" id="sg7f">subglobal7 link</a> |
+            <a href="#" id="sg7g">subglobal7 link</a> 
+        </div>
+      </div>
+    </div> 
+    <!-- end masthead --> 
+    <div id="pagecell1"> 
+      <!--pagecell1--> 
+      <img alt="" src="tl_curve_white.gif" height="6" width="6" id="tl"> <img alt="" src="tr_curve_white.gif" height="6" width="6" id="tr"> 
+      <div id="breadCrumb"> 
+        <a href="javascript:gotopage('templates/empty.html');" id="bread1">Clear Content</a> /
+        <a href="javascript:gotopage('templates/filler.html');" id="bread2">Reload Filler</a> /
+        <a href="javascript:gotopage('templates/long.html');" id="bread3">Load long filler</a>
+      </div> 
+      <div id="pageName"> 
+        <h2 id="pageNameHeader">Page Name</h2> 
+        <img alt="small logo" src="" height="59" width="66"/> 
+      </div> 
+      <div id="pageNav" class="normal"> 
+        <div id="sectionLinks"> 
+          <a href="#">Section Link</a>
+          <a href="#">Section Link</a>
+          <a href="#">Section Link</a>
+          <a href="#">Section Link</a>
+          <a href="#">Section Link</a>
+          <a href="#">Section Link</a> 
+        </div> <!-- end sectionLinks -->
+        <div class="relatedLinks" id="rLinks1"> 
+          <h3>Related Link Category</h3> 
+          <a href="#">Related Link</a>
+          <a href="#">Related Link</a>
+          <a href="#">Related Link</a>
+          <a href="#">Related Link</a>
+          <a href="#">Related Link</a>
+          <a href="#">Related Link</a> 
+        </div> <!-- end relatedLinks -->
+        <div class="relatedLinks" id="rLinks2"> 
+          <h3>Related Link Category</h3> 
+          <a href="#">Related Link</a>
+          <a href="#">Related Link</a>
+          <a href="#">Related Link</a>
+          <a href="#">Related Link</a>
+          <a href="#">Related Link</a>
+          <a href="#">Related Link</a> 
+        </div> <!-- end relatedLinks -->
+        <div id="advert"> 
+          <img src="" alt="" width="107" height="66" />
+          Advertisement copy goes here.
+          Advertisement copy goes here.
+        </div> <!-- end advert -->
+      </div> <!-- end pageNav -->
+      <div id="content"> 
+        <div class="feature"> 
+          <img src="" alt="" width="280" height="200"> 
+          <h3>Feature Title </h3> 
+          <p>
+           Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie.
+           Sed aliquam sem ut arcu. Phasellus sollicitudin. Vestibulum condimentum
+           facilisis nulla. In hac habitasse platea dictumst. Nulla nonummy. Cras
+           quis libero. Cras venenatis. Aliquam posuere lobortis pede. Nullam fringilla
+           urna id leo. Praesent aliquet pretium erat. Praesent non odio. Pellentesque
+           a magna a mauris vulputate lacinia. Aenean viverra. Class aptent taciti
+           sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos.
+           Aliquam lacus. Mauris magna eros, semper a, tempor et, rutrum et, tortor.
+          </p> 
+        </div> 
+        <div class="story"> 
+          <h3>Story Title</h3> 
+          <p>
+           Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie.
+           Sed aliquam sem ut arcu. Phasellus sollicitudin. Vestibulum condimentum
+           facilisis nulla. In hac habitasse platea dictumst. Nulla nonummy. Cras
+           quis libero. Cras venenatis. Aliquam posuere lobortis pede. Nullam fringilla
+           urna id leo. Praesent aliquet pretium erat. Praesent non odio. Pellentesque
+           a magna a mauris vulputate lacinia. Aenean viverra. Class aptent taciti
+           sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos.
+           Aliquam lacus. Mauris magna eros, semper a, tempor et, rutrum et, tortor.
+          </p> 
+          <p>
+           Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie.
+           Sed aliquam sem ut arcu. Phasellus sollicitudin. Vestibulum condimentum
+           facilisis nulla. In hac habitasse platea dictumst. Nulla nonummy. Cras
+           quis libero. Cras venenatis. Aliquam posuere lobortis pede. Nullam fringilla
+           urna id leo. Praesent aliquet pretium erat. Praesent non odio. Pellentesque
+           a magna a mauris vulputate lacinia. Aenean viverra. Class aptent taciti
+           sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos.
+           Aliquam lacus. Mauris magna eros, semper a, tempor et, rutrum et, tortor.
+          </p> 
+        </div> 
+        <div class="story"> 
+          <table width="100%" cellpadding="0" cellspacing="0" summary=""> 
+            <tr valign="top"> 
+              <td class="storyLeft"> <p> 
+                <a href="#" class="capsule">Capsule Story</a> Cras enim. Vestibulum
+                ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+                Curae; Ut eu augue. Integer risus wisi, semper eu, congue quis, lobortis
+                ut, massa. Vestibulum auctor vestibulum lectus. Vivamus neque. Cras
+                lobortis. Aenean ut turpis eu libero volutpat euismod. <a href="#">Donec</a> eget
+                lectus vitae ligula ornare tempor. Vivamus scelerisque lorem a elit.
+                Sed id mauris. 
+                </p></td> 
+              <td> <p> 
+                <a href="#" class="capsule">Capsule Story</a> Cras enim. Vestibulum
+                ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+                Curae; Ut eu augue. Integer risus wisi, semper eu, congue quis, lobortis
+                ut, massa. Vestibulum auctor vestibulum lectus. Vivamus neque. Cras
+                lobortis. Aenean ut turpis eu libero volutpat euismod. <a href="#">Donec</a> eget
+                lectus vitae ligula ornare tempor. Vivamus scelerisque lorem a elit.
+                Sed id mauris. 
+                </p></td> 
+            </tr> 
+            <tr valign="top"> 
+              <td class="storyLeft"> <p> 
+                <a href="#" class="capsule">Capsule Story</a> Cras enim. Vestibulum
+                ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+                Curae; Ut eu augue. Integer risus wisi, semper eu, congue quis, lobortis
+                ut, massa. Vestibulum auctor vestibulum lectus. Vivamus neque. Cras
+                lobortis. Aenean ut turpis eu libero volutpat euismod. <a href="#">Donec</a> eget
+                lectus vitae ligula ornare tempor. Vivamus scelerisque lorem a elit.
+                Sed id mauris. 
+                </p></td> 
+              <td> <p> 
+                <a href="#" class="capsule">Capsule Story</a> Cras enim. Vestibulum
+                ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+                Curae; Ut eu augue. Integer risus wisi, semper eu, congue quis, lobortis
+                ut, massa. Vestibulum auctor vestibulum lectus. Vivamus neque. Cras
+                lobortis. Aenean ut turpis eu libero volutpat euismod. <a href="#">Donec</a> eget
+                lectus vitae ligula ornare tempor. Vivamus scelerisque lorem a elit.
+                Sed id mauris. 
+                </p></td> 
+            </tr> 
+            <tr valign="top"> 
+              <td class="storyLeft"> <p> 
+                <a href="#" class="capsule">Capsule Story</a> Cras enim. Vestibulum
+                ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+                Curae; Ut eu augue. Integer risus wisi, semper eu, congue quis, lobortis
+                ut, massa. Vestibulum auctor vestibulum lectus. Vivamus neque. Cras
+                lobortis. Aenean ut turpis eu libero volutpat euismod. <a href="#">Donec</a> eget
+                lectus vitae ligula ornare tempor. Vivamus scelerisque lorem a elit.
+                Sed id mauris. 
+                </p></td> 
+              <td> <p> 
+                <a href="#" class="capsule">Capsule Story</a> Cras enim. Vestibulum
+                ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+                Curae; Ut eu augue. Integer risus wisi, semper eu, congue quis, lobortis
+                ut, massa. Vestibulum auctor vestibulum lectus. Vivamus neque. Cras
+                lobortis. Aenean ut turpis eu libero volutpat euismod. <a href="#">Donec</a> eget
+                lectus vitae ligula ornare tempor. Vivamus scelerisque lorem a elit.
+                Sed id mauris. 
+                </p></td> 
+            </tr> 
+          </table> 
+        </div> 
+      </div> 
+      <div id="siteInfo">
+		<span id="site_link_image">
+        	<img src="" width="44" height="22">
+        </span>
+        <span id="site_links">
+        	<a href="#;">About Us</a> |
+        	<a href="#">Site Map</a> |
+        	<a href="#">Privacy Policy</a> |
+        	<a href="#">Contact Us</a> |
+        </span>
+        <span id="copyright">&copy;2013 Company Name</span>
+      </div> 
+    </div> 
+    <!--end pagecell1--> 
+    <br> 
+    <script type="text/javascript">
+        <!--
+            var menuitem1, menuitem2, menuitem3, menuitem4, menuitem5, menuitem6, menuitem7;
+            shuntMenus();
+            reloadMenus();
+        // -->
+    </script> 
+</body>
+</html>

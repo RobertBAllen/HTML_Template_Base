@@ -1,0 +1,9 @@
+/* Hide certain items from being shown */
+#search {
+    display: none;
+    visibility: hidden;
+}
+#advert {
+    display: none;
+    visibility: hidden;
+}
